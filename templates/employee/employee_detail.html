@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Información detallada de un empleado</title>
+</head>
+<body>
+    <h1>Información detallada de un empleado</h1>
+    <p><span style="color:black;font-weight:bold;font-size:18px;">Nombre:</span> {{employee.first_name}}</p>
+    <p><span style="color:black;font-weight:bold;font-size:18px;">Apellido:</span> {{employee.last_name}}</p>
+    <p><span style="color:black;font-weight:bold;font-size:18px;">Trabajo:</span> {{employee.get_job_display}}</p>
+    <p><span style="color:black;font-weight:bold;font-size:18px;">Área de la empresa:</span> {{employee.department}}</p>
+    <h4>Habilidades: </h4>
+        <ul>
+            {% for skill in employee.skills.all %}
+                <li>{{skill}}</li>
+            {% endfor %}
+        </ul>
+    <h4>Curriculum: </h4>{{employee.curriculum|safe}}
+</body>
+</html>

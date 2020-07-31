@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock title %}
+
+{% block content %}
+{% load static %}
+    <div class="slider">
+        <ul class="slides">
+          <li>
+            <img src="{% static 'img/slide1.jpeg' %}"> <!-- random image -->
+            <div class="caption center-align">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="{% static 'img/slide2.jpeg' %}"> <!-- random image -->
+            <div class="caption left-align">
+              <h3>Left Aligned Caption</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="{% static 'img/slide3.jpeg' %}"> <!-- random image -->
+            <div class="caption right-align">
+              <h3>Right Aligned Caption</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+          <li>
+            <img src="{% static 'img/slide4.jpeg' %}"> <!-- random image -->
+            <div class="caption center-align">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <h2 class="title">Bienvenido al sistema de registro de empleados</h2>
+
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="{% static 'img/employee.jpg' %}">
+            <span class="card-title">Registro de empleados</span>
+            <a href="{% url 'employee_app:employee-create' %}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+          </div>
+          <div class="card-content">
+            <p>El sistema de registros de los empleados de tu empresa mas eficiente del mercado.
+                Con este sistema la vida en tu empresa va a ser más fácil.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

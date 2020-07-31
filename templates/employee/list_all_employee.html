@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Lista de empleados{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+    <h1 class="title">Lista de empleados de la empresa</h1>
+    <nav class="container">
+        <div class="nav-wrapper">
+            <form class="row" method="get"> {% csrf_token %}
+                <div class="input-field col s12 m9 l10">
+                    <input id="kword" name="kword" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                </div>
+                <div class="input-field col s12 m3 l2">
+                    <button type="submit" class="waves-effect waves-light btn-large">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    {% if employee_list %}
+        <h5 class="title">Total de empleados: {{ employee_list|length }}</h5>
+    {% else %}
+    <h4 class="title">No hay empleados.</h4>
+    {% endif %}
+
+<table class="striped centered">
+    <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Trabajo</th>
+            <th>Departamento</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for employee in employee_list %}
+            <tr>
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td>{{employee.job}}</td>
+                <td>{{employee.department}}</td>
+                <td>
+                    <a href="{% url 'employee_app:employee-detail' employee.id %}"><i style="color:#4caf50;" class="material-icons center">visibility</i></a>
+                    <a href="{% url 'employee_app:employee-update' employee.id %}"><i class="material-icons center">edit</i></a>
+                    <a href="{% url 'employee_app:employee-delete' employee.id %}"><i style="color:#ef5350;" class="material-icons center">delete</i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination row">
+    <span class="step-links col l12 offset-l4">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Primero</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próximo</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}

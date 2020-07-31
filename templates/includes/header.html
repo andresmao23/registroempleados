@@ -1,0 +1,21 @@
+<div class="navbar-fixed">
+<nav>
+    <div class="nav-wrapper">
+        <a href="{% url 'employee_app:index' %}" class="brand-logo">REGISTRO EMPLEADOS</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'employee_app:list-all-employee' %}">Listar</a></li>
+            <li><a href="{% url 'department_app:list-all-department' %}">Departamentos</a></li>
+            <li><a href="#">Administrar</a></li>
+            <li><a href="{% url 'employee_app:employee-create' %}" class="waves-effect waves-light btn">Registrar nuevo</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'employee_app:list-all-employee' %}">Listar</a></li>
+    <li><a href="#">Departamentos</a></li>
+    <li><a href="#">Administrar</a></li>
+    <li><a href="{% url 'employee_app:employee-create' %}">Registrar nuevo</a></li>
+</ul>

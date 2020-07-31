@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista las habilidades de un empleado</title>
+</head>
+<body>
+    <h1>Lista las habilidades de un empleado</h1>
+    {% if employee_skills %}
+        Total de habilidades: {{ employee_skills|length }}
+        <ul>
+            {% for skill in employee_skills %}
+                <li><h3>{{skill}}</h3></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        El empleado no tiene habilidades registradas.
+    {% endif %}
+</body>
+</html>

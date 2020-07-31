@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Empleados por departamento{% endblock title %}
+
+{% block content %}
+{% load static %}
+    <h1 class="title">Lista de empleados por departamento</h1>
+    {% if list_by_area %}
+        <h4 class="title">Total de empleados: {{ list_by_area|length }}</h4>
+    {% else %}
+    <h4 class="title">No hay empleados.</h4>
+    {% endif %}
+    <table class="striped centered">
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Trabajo</th>
+                <th>Departamento</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for employee in list_by_area %}
+                <tr>
+                    <td>{{employee.first_name}}</td>
+                    <td>{{employee.last_name}}</td>
+                    <td>{{employee.job}}</td>
+                    <td>{{employee.department}}</td>
+                    <td>
+                        <a href="{% url 'employee_app:employee-detail' employee.id %}"><i style="color:#4caf50;" class="material-icons center">visibility</i></a>
+                        <a href="{% url 'employee_app:employee-update' employee.id %}"><i class="material-icons center">edit</i></a>
+                        <a href="{% url 'employee_app:employee-delete' employee.id %}"><i style="color:#ef5350;" class="material-icons center">delete</i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--div class="container">
+        {% if list_by_area %}
+        <h4 class="title">Total de empleados: {{ list_by_area|length }}</h4>
+            <ul>
+                {% for employee in list_by_area %}
+                    <li><h3>{{employee.first_name}} {{employee.last_name}}</h3></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            No hay empleados.
+        {% endif %}
+    </div-->
+{% endblock content %}

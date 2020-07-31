@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Lista de departamentos{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+    <h1 class="title">Lista de departamentos de la empresa</h1>
+
+    <table class="striped centered">
+        <thead>
+            <tr>
+                <th>Departamento</th>
+                <th>Nombre corto</th>
+                <th>Empleados del departamento</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for depto in department_list %}
+                <tr>
+                    <td>{{depto.name}}</td>
+                    <td>{{depto.short_name}}</td>
+                    <td>
+                        <a href="{% url 'employee_app:list-employee-by-area' depto.short_name %}" class="waves-effect waves-light btn">
+                            <i class="material-icons left">visibility</i>
+                            Ver empleados
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de empleados por palabra clave</title>
+</head>
+<body>
+    <h1>Lista de empleados por palabra clave</h1>
+    <form method="get">{%csrf_token%}
+        <input type="text" id="kward" name="kword" placeholder="Ingrese el nombre">
+        <button type="submit">Buscar</button>
+    </form>
+    <br>
+    {% if list_by_kword %}
+        Total de empleados: {{ list_by_kword|length }}
+        <ul>
+            {% for employee in list_by_kword %}
+                <li><h3>{{employee.first_name}} {{employee.last_name}}</h3></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No hay empleados.
+    {% endif %}
+</body>
+</html>

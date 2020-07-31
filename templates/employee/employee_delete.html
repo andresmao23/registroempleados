@@ -1,0 +1,4 @@
+<form method="post">{% csrf_token %}
+    <h2 style="color:red;">Confirma que desea eliminar el registro "{{ object }}"?</h2>
+    <input type="submit" value="Confirmar">
+</form>
